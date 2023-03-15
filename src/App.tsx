@@ -11,7 +11,7 @@ function App() {
 
   const { open, isReady } = useStradaLink({
     env: 'sandbox',
-    linkAccessToken: "<INSERT YOUR LINK ACCESS TOKEN HERE>",
+    linkAccessToken: document.getElementById("jwt")?.innerText,
     onSuccess
   });
 
@@ -23,9 +23,14 @@ function App() {
 
   } else {
     return (
-      <button disabled={!isReady} onClick={open}>
-        Connect Account
-      </button>
+      <div>
+        <textarea id="jwt">
+
+        </textarea>
+        <button disabled={!isReady} onClick={open}>
+          Connect Account
+        </button>
+      </div>
     );
   }
 }
