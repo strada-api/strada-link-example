@@ -9,9 +9,15 @@ function App() {
     setPublicToken(public_token)
   }, []);
 
+  const [input, setInput] = useState<string>('Enter Link Access Token')
+
+  const handleChange = (event: any) => {
+    setInput(event.target.value);
+  };
+
   const { open, isReady } = useStradaLink({
     env: 'sandbox',
-    linkAccessToken: document.getElementById("jwt")?.innerText,
+    linkAccessToken: input,
     onSuccess
   });
 
@@ -24,9 +30,7 @@ function App() {
   } else {
     return (
       <div>
-        <textarea id="jwt">
-
-        </textarea>
+        <textarea id="jwt" value={input} onChange={handleChange}></textarea>
         <button disabled={!isReady} onClick={open}>
           Connect Account
         </button>
