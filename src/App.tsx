@@ -16,7 +16,7 @@ function App() {
   };
 
   const { open, isReady } = useStradaLink({
-    env: 'prod',
+    env: 'sandbox',
     linkAccessToken: input,
     onSuccess
   });
